@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using InstaSharp.Models.Responses;
 using Newtonsoft.Json;
 using System.Net.Http;
@@ -23,20 +25,24 @@ namespace InstaSharp.Extensions
             {
                 if (response.Headers.Contains(RateLimitHeader))
                 {
+                    IEnumerable<string> responseValue;
+                    response.Headers.TryGetValues(RateLimitHeader, out responseValue);
+
                     endpointResponse.RateLimitLimit =
-                        response.Headers
-                            .GetValues(RateLimitHeader)
+                        responseValue
                             .Select(int.Parse)
                             .SingleOrDefault();
                 }
 
                 if (response.Headers.Contains(RateLimitRamainingHeader))
                 {
+                    IEnumerable<string> responseValue;
+                    response.Headers.TryGetValues(RateLimitRamainingHeader, out responseValue);
+
                     endpointResponse.RateLimitRemaining =
-                        response.Headers
-                            .GetValues(RateLimitRamainingHeader)
+                        responseValue
                             .Select(int.Parse)
-                            .SingleOrDefault();
+                            .FirstOrDefault();
                 }
             }
 

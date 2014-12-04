@@ -102,6 +102,10 @@ namespace InstaSharp.Endpoints
             XInstaForwardedHeader = CreateXInstaForwardedHeader();
         }
 
+        /// <summary>
+        /// Disables the enforce signed header.
+        /// </summary>
+        /// <param name="ipAdresses">The ip adresses.</param>
         public void DisableEnforceSignedHeader(string ipAdresses)
         {
             Ips = null;
