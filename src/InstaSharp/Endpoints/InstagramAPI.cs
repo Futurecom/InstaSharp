@@ -103,9 +103,9 @@ namespace InstaSharp.Endpoints
         }
 
         /// <summary>
-        /// Disables the enforce signed header.
+        /// Disables Enforced signed header.  See the Restrict API Requests documentation for details. http://instagram.com/developer/restrict-api-requests/
         /// </summary>
-        /// <param name="ipAdresses">The ip adresses.</param>
+        /// <param name="ipAdresses"></param>
         public void DisableEnforceSignedHeader(string ipAdresses)
         {
             Ips = null;
@@ -119,7 +119,7 @@ namespace InstaSharp.Endpoints
             AddHeaders(request);
             return AddAuth(request);
         }
-        
+
         /// <param name="request"></param>
         private void AddHeaders(HttpRequestMessage request)
         {

@@ -5,8 +5,15 @@ namespace InstaSharp.Models.Responses
     /// <summary>
     /// Media Response object contains a list of media and pagination
     /// </summary>
-    public class MediasResponse : Response
+    public class MediasResponse : Response, IPagination<Media>
     {
+        /// <summary>
+        /// Create a MediasResponse object
+        /// </summary>
+        public MediasResponse()
+        {
+            Data = new List<Media>();
+        }
         /// <summary>
         /// Gets or sets the pagination.
         /// </summary>
